@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resultados — Sobreposição de horários</title>
+  <style>
+    :root {
+      --bg: #0f172a;      /* slate-900 */
+      --card: #111827;    /* gray-900 */
+      --muted: #94a3b8;   /* slate-400 */
+      --text: #e5e7eb;    /* gray-200 */
+      --accent: #22c55e;  /* green-500 */
+      --accent-2: #38bdf8;/* sky-400 */
+      --warning: #f59e0b; /* amber-500 */
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: linear-gradient(135deg, #0f172a, #0b1220);
+      color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 40px; }
+    header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .title {
+      font-size: 28px; font-weight: 800; letter-spacing: 0.2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .subtitle { color: var(--muted); font-size: 14px; }
+
+    /* GRID PRINCIPAL */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    /* WRAPPER FLEX PARA EQUAL HEIGHT DOS 2 PRIMEIROS CARDS */
+    .row-equal {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 16px;
+    }
+    .row-equal .card {
+      flex: 1;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* CARTÃO */
+    .card {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(148,163,184,0.15);
+      border-radius: 14px;
+      padding: 16px 16px 14px;
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 16px; color: #ffffff; }
+    .card p, .card li { color: var(--text); font-size: 14px; line-height: 1.45; }
+    ul { margin: 8px 0 0 18px; padding: 0; }
+
+    .tag {
+      display: inline-block; padding: 2px 8px; border-radius: 999px;
+      background: rgba(34,197,94,0.15); color: #bbf7d0; font-size: 12px; border: 1px solid rgba(34,197,94,0.35);
+    }
+    .muted { color: var(--muted); }
+    .pill {
+      background: rgba(56,189,248,0.15); color: #bae6fd; border: 1px solid rgba(56,189,248,0.35);
+      padding: 4px 10px; border-radius: 999px; font-size: 12px; margin-left: 8px;
+    }
+    .callout {
+      border-left: 3px solid var(--accent);
+      padding: 10px 12px; background: rgba(34,197,94,0.07);
+      border-radius: 10px; margin-top: 8px;
+    }
+
+    .footer {
+      margin-top: 18px; display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 12px;
+    }
+    
+    /* LOGO - SEM BORDA E MAIOR */
+    .logo {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      font-size: 25px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .row-equal { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="title">Resultados — Formulário Avaliação das Sobreposições na Central</div>
+        <div class="subtitle">Amostra: 6 respostas | Operadores do Centro de Controlo de Tráfego (OCCT)</div>
+      </div>
+      <div class="logo">CCT_DI</div>
+    </header>
+
+    <div class="grid">
+      <!-- Linha 1: dois cartões com equal height -->
+      <div class="row-equal">
+        <section class="card">
+          <h3>Consensos</h3>
+          <ul>
+            <li>Útil em dias úteis (especialmente no Turno 2/manhã).</li>
+            <li>Benefícios: Dividir tarefas, Reduzir stress, Pausas.</li>
+            <li>Melhora foco/qualidade e profissionalismo na resposta.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h3>Divergências</h3>
+          <ul>
+            <li>Fins de semana/Feriados: utilidade da sobreposição é percebida como menor.</li>
+            <li>A visão "multiposto": risco de desvio de informação/ruído.</li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Linha 2: ocupa 12 colunas -->
+      <section class="card" style="grid-column: span 12;">
+        <h3>Tarefas durante a sobreposição
+          <span class="pill">Registos</span><span class="pill">Mensagens</span>
+          <span class="pill">Telemática</span><span class="pill">Chamadas/SOS</span>
+          <span class="pill">Cobrir pausas</span>
+        </h3>
+        <p class="muted">Registo de incidências; Gestão de mensagens; Gestão de PI's; Gestão Telemática/Sistemas de Emergência; Atender telefone/SOS e Cobertura de pausas.</p>
+      </section>
+
+      <!-- Linha 3: 6 + 6 colunas (largura igual) -->
+      <section class="card" style="grid-column: span 6;">
+        <h3>Oportunidades de melhoria</h3>
+        <ul>
+          <li>Mais disponibilidade e responsabilização em backoffice (BO).</li>
+          <li>Clarificar papéis na sobreposição (OP vs BO).</li>
+          <li>Reforçar práticas de trabalho em equipa.</li>
+        </ul>
+        <div class="callout">
+          "Uma voz para fora, duas mãos por dentro." — OP comunica; OP+BO executam.
+        </div>
+      </section>
+
+      <section class="card" style="grid-column: span 6;">
+        <h3>Próximos passos (proposta)</h3>
+        <ul>
+          <li>Definir quando ativar: dias úteis/picos; reduzir em fins de semana/feriados.</li>
+          <li>Mini‑guia 1 página + checklist de handover.</li>
+          <li>Piloto 4 semanas com métricas simples em 2026.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="footer">
+      <div>Preparado por: Carina Bravo — Baseado nas respostas do OCCT</div>
+      <div>Data: 07/11/2025</div>
+    </div>
+  </div>
+</body>
+</html>
